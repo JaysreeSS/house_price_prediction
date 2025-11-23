@@ -53,16 +53,11 @@ st.sidebar.write("What is the commission after sales?")
 # Inputs 
 # ------------------------------------------------------------------------
 
-area_list = ['Adyar', 'Anna Nagar', 'Chrompet', 'KK Nagar', 'Karapakkam', 'T Nagar']
+area_list = ['Karapakkam', 'Anna Nagar', 'Adyar', 'Velachery', 'Chrompet', 'KK Nagar', 'T Nagar']
 area = st.selectbox("Area", area_list)
 # Encode area according to model
 area_map = {
-    'Adyar': 0,
-    'Anna Nagar': 1,
-    'Chrompet': 2,
-    'KK Nagar': 3,
-    'Karapakkam': 4,
-    'T Nagar': 5
+    'Karapakkam': 4, 'Anna Nagar': 1, 'Adyar': 0, 'Velachery': 6, 'Chrompet': 2, 'KK Nagar': 3, 'T Nagar': 5
 }
 area = area_map[area]
 
@@ -99,3 +94,4 @@ if st.button("Predict"):
         st.error("Please fill all the fields!")
     else:
         predict(int(regis), area, int(sqft), build, zone, bed, bath, int(commis), park, int(dist))
+
