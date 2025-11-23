@@ -4,12 +4,21 @@ Spyder Editor
 This is a temporary script file.
 """
 
+import zipfile
+import os
 import streamlit as st
 import pickle
 import numpy as np
 
-# Load the model
-model = pickle.load(open('model_rf.pkl', 'rb'))
+zip_path = "model_rf.zip"
+extract_dir = "model_extracted"
+model_file = "model_rf.pkl"
+# Extract only once
+if not os.path.exists(extract_dir):
+    with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+        zip_ref.extractall(extract_dir)
+model_path = os.path.join(extract_dir, model_file)
+model = pickle.load(open(model_path, 'rb'))
 
 def predict(regis, area, sqft, build, zone, bed, bath, commis, park, dist):
     inp = np.array([[regis, area, sqft, build, zone, bed, bath, commis, park, dist]]).astype(np.int32)
@@ -94,4 +103,5 @@ if st.button("Predict"):
         st.error("Please fill all the fields!")
     else:
         predict(int(regis), area, int(sqft), build, zone, bed, bath, int(commis), park, int(dist))
+
 
