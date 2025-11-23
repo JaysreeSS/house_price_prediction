@@ -105,5 +105,5 @@ pip install -r requirements.txt
 ### **3. Run Streamlit**
 
 ```
-streamlit run app.py
+streamlit run housestreamlit1.py
 ```
