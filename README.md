@@ -92,8 +92,8 @@ This end-to-end approach aims to deliver a reliable tool that simplifies real-es
 ### **1. Clone the repo**
 
 ```
-git clone https://github.com/JaysreeSS/house-price-prediction.git
-cd house-price-prediction
+git clone https://github.com/JaysreeSS/house_price_prediction.git
+cd house_price_prediction
 ```
 
 ### **2. Install dependencies**
