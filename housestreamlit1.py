@@ -23,7 +23,7 @@ model = pickle.load(open(model_path, 'rb'))
 def predict(regis, area, sqft, build, zone, bed, bath, commis, park, dist):
     inp = np.array([[regis, area, sqft, build, zone, bed, bath, commis, park, dist]]).astype(np.int32)
     prediction = model.predict(inp)
-    output = int(prediction)
+    output = int(prediction[0])
 
     st.success('Price of the House = Rs. {} (approx.)'.format(output))
     st.success('Amount per Square Feet = Rs. {} (approx.)'.format(int(output / sqft)))
@@ -103,5 +103,6 @@ if st.button("Predict"):
         st.error("Please fill all the fields!")
     else:
         predict(int(regis), area, int(sqft), build, zone, bed, bath, int(commis), park, int(dist))
+
 
 
